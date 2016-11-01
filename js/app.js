@@ -37,11 +37,11 @@ var addTask = function () {
 
     //modificare questi elementi
     buttonMove.className = "move";
-    buttonMove.innerText = "Move";
+    buttonMove.innerHTML = '<svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.16 18.81"><title>Senza titolo-5</title><polyline class="move-1" points="2 8.41 9.18 16.8 21.16 2"/></svg>';
     editInput.type = "text";
-    buttonEdit.innerText = "Edit";
+    buttonEdit.innerHTML = '<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236.2 236"><title>1478049980_flat-style-circle-edit</title><path class="edit-1" d="M142.9,329l-5,45,45-5,144-144-40-40Z" transform="translate(-137.9 -138)"/><path class="edit-1" d="M337.1,138a12.12,12.12,0,0,0-8.6,3.6L307.9,164l40,40,22.6-20.5a12.07,12.07,0,0,0,0-17.2l-24.7-24.7a12.89,12.89,0,0,0-8.7-3.6h0Z" transform="translate(-137.9 -138)"/></svg>';
     buttonEdit.className = "edit";
-    buttonDelete.innerText = "Delete";
+    buttonDelete.innerHTML = '<svg id="Livello_2" data-name="Livello 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.17 19.17"><title>Senza titolo-5</title><line class="delete-1" x1="2" y1="2" x2="17.17" y2="17.17"/><line class="delete-1" x1="17.17" y1="2" x2="2" y2="17.17"/></svg>';
     buttonDelete.className = "delete";
     label.innerText = text;
 
