@@ -1,6 +1,6 @@
 /* Basic Style */
 html { 
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(../images/mont3.jpeg) no-repeat center center fixed;
 }
 
