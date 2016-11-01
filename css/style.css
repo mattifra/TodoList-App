@@ -191,7 +191,8 @@ li > label {
   font-size: 18px;
   line-height: 25px;
   width: 160px;
-  padding: 0 0 0 11px;
+  padding: 0 0 8px 11px;
+  margin-top: 7px;
 }
 li >  input[type="text"] {
   width: 141px;
