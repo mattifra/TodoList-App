@@ -62,6 +62,11 @@ var addTask = function () {
 
 btnAdd.onclick = addTask;
 
+newTask.addEventListener("keyup", function(event) {
+    if (event.keyCode == 13) {
+       addTask();
+    }
+});
 
 //funz generale per associare il click a i vari pulsanti
  function makeButtonsWork(bottone, task) {
