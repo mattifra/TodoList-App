@@ -11,7 +11,7 @@ body {
 .container {
   display: block;
   max-width: 400px;
-  margin: 100px auto 0;
+  margin: 40px auto 0;
 }
 ul {
   margin: 0;
@@ -76,7 +76,7 @@ input[type="text"]:focus {
 #addTask button {
   position: absolute;
   top: -14px;
-  right: -15px;
+  right: -2px;
 }
 
 label[for='new-task'] {
@@ -240,12 +240,20 @@ li {
 @media screen and (min-width: 410px) {
 
   li >  input[type="text"] {
-  width: 231px;
-}
+    width: 231px;
+  }
 
-li > label {
+  li > label {
 
-  width: 250px;
-}
+    width: 250px;
+  }
 
+  .container {
+    margin: 100px auto 0;
+  }
+
+  #addTask button {
+
+    right: -15px;
+  }
 }
