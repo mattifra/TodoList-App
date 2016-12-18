@@ -1,135 +1,89 @@
-var btnAdd = document.querySelector('#addTask button');
-var incompleteTaskHolder = document.getElementById('incomplete-tasks');
-var completeTaskHolder = document.getElementById('completed-tasks');
-var newTask = document.getElementById('new-task');
-var btnDelete = document.getElementsByClassName('delete');
-var btnEdit = document.getElementsByClassName('edit');
-var btnMove = document.getElementsByClassName('move');
-
-var addTask = function () {
-  var value = newTask.value;
-
-//if there is a text inside the newtask, add an li to the to do section
-  if (value) createItem(value);
-};
-
-//funzione per creare un li e inserirlo nella lista todo, dopo il click
- var createItem = function(text) {
-     //creo un elemento li
-    var todoElement = document.createElement("li");
-       //input: checkbox
-    var buttonMove = document.createElement("button");
-       //label: testo del #new-task
-    var label = document.createElement("label");
-       //input: text
-    var editInput = document.createElement("input");
-       //button: edit
-    var buttonEdit = document.createElement("button");
-       //button: delete
-    var buttonDelete = document.createElement("button");
-
-      //inserire tutti gli elementi nell'elementi li
-    todoElement.appendChild(buttonMove);
-    todoElement.appendChild(label);
-    todoElement.appendChild(editInput);
-    todoElement.appendChild(buttonEdit);
-    todoElement.appendChild(buttonDelete);
-
-    //modificare questi elementi
-    buttonMove.className = "move";
-    buttonMove.innerHTML = '<svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.16 18.81"><title>Senza titolo-5</title><polyline class="move-1" points="2 8.41 9.18 16.8 21.16 2"/></svg>';
-    editInput.type = "text";
-    buttonEdit.innerHTML = '<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236.2 236"><title>1478049980_flat-style-circle-edit</title><path class="edit-1" d="M142.9,329l-5,45,45-5,144-144-40-40Z" transform="translate(-137.9 -138)"/><path class="edit-1" d="M337.1,138a12.12,12.12,0,0,0-8.6,3.6L307.9,164l40,40,22.6-20.5a12.07,12.07,0,0,0,0-17.2l-24.7-24.7a12.89,12.89,0,0,0-8.7-3.6h0Z" transform="translate(-137.9 -138)"/></svg>';
-    buttonEdit.className = "edit";
-    buttonDelete.innerHTML = '<svg id="Livello_2" data-name="Livello 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.17 19.17"><title>Senza titolo-5</title><line class="delete-1" x1="2" y1="2" x2="17.17" y2="17.17"/><line class="delete-1" x1="17.17" y1="2" x2="2" y2="17.17"/></svg>';
-    buttonDelete.className = "delete";
-    label.innerText = text;
-
-    //iserire l'elemento creato nella lista to do
-     incompleteTaskHolder.appendChild(todoElement);
-    
-    //per collegare il click anche agli elementi creati
-    makeButtonsWork(btnDelete, deleteTask);
-    makeButtonsWork(btnEdit, editTask);
-    makeButtonsWork(btnMove, moveTask);
-
-
-
-    //far tornare vuota la casella newTask
-     newTask.value = "";
-
-    };
-
-btnAdd.onclick = addTask;
-
-newTask.addEventListener("keyup", function(event) {
-    if (event.keyCode == 13) {
-       addTask();
-    }
-});
-
-//funz generale per associare il click a i vari pulsanti
- function makeButtonsWork(bottone, task) {
-  for (var i = 0; i < bottone.length; i++)  {
-    bottone[i].onclick = task;
+window.onload = function(){
+  //canvas init
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  
+  //canvas dimensions
+  var W = window.innerWidth;
+  var H = window.innerHeight;
+  canvas.width = W;
+  canvas.height = H;
+  
+  //snowflake particles
+  var mp = 25; //max particles
+  var particles = [];
+  for(var i = 0; i < mp; i++)
+  {
+    particles.push({
+      x: Math.random()*W, //x-coordinate
+      y: Math.random()*H, //y-coordinate
+      r: Math.random()*4+1, //radius
+      d: Math.random()*mp //density
+    })
   }
-};
-
-//add click event for removing items
- var deleteTask = function() {
- var elToRemove = this.parentNode;
- var parentEltoRemove = elToRemove.parentNode;
- parentEltoRemove.removeChild(elToRemove);
-
+  
+  //Lets draw the flakes
+  function draw()
+  {
+    ctx.clearRect(0, 0, W, H);
+    
+    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.beginPath();
+    for(var i = 0; i < mp; i++)
+    {
+      var p = particles[i];
+      ctx.moveTo(p.x, p.y);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
+    }
+    ctx.fill();
+    update();
+  }
+  
+  //Function to move the snowflakes
+  //angle will be an ongoing incremental flag. Sin and Cos functions will be applied to it to create vertical and horizontal movements of the flakes
+  var angle = 0;
+  function update()
+  {
+    angle += 0.01;
+    for(var i = 0; i < mp; i++)
+    {
+      var p = particles[i];
+      //Updating X and Y coordinates
+      //We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
+      //Every particle has its own density which can be used to make the downward movement different for each flake
+      //Lets make it more random by adding in the radius
+      p.y += Math.cos(angle+p.d) + 1 + p.r/2;
+      p.x += Math.sin(angle) * 2;
+      
+      //Sending flakes back from the top when it exits
+      //Lets make it a bit more organic and let flakes enter from the left and right also.
+      if(p.x > W+5 || p.x < -5 || p.y > H)
+      {
+        if(i%3 > 0) //66.67% of the flakes
+        {
+          particles[i] = {x: Math.random()*W, y: -10, r: p.r, d: p.d};
+        }
+        else
+        {
+          //If the flake is exitting from the right
+          if(Math.sin(angle) > 0)
+          {
+            //Enter from the left
+            particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d};
+          }
+          else
+          {
+            //Enter from the right
+            particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d};
+          }
+        }
+      }
+    }
+  }
+  
+  //animation loop
+  setInterval(draw, 33);
 }
-
-makeButtonsWork(btnDelete, deleteTask);
-
-
-//add click event for editing items
-var editTask = function() {
-
-  var listItem = this.parentNode;
-  var hasClass = listItem.classList.contains("editMode");
-  var editInput = listItem.querySelector("input[type=text]");
-  var label = listItem.querySelector("label");
-
-  //if ha gia edit
-  if (hasClass) {
-    //gli tolgo la classe edit
-    //mettere come label il valore dell'input
-    label.innerText = editInput.value;
-    } else {
-  // else
-   //gli metto la class edit
-   //mettere come input il testo del label
-   editInput.value = label.innerText;
-   }
-
- //toggle la class edit
- listItem.classList.toggle("editMode");
-};
-
-makeButtonsWork(btnEdit, editTask);
-
- 
-//add click event for editing items
-var moveTask = function() {
-  var listItem = this.parentNode;
-  var parent = listItem.parentNode;
-
-if (parent.id === 'incomplete-tasks') {
-  completeTaskHolder.appendChild(listItem);
-} else  if (parent.id ==='completed-tasks') {
-   incompleteTaskHolder.appendChild(listItem);
-};
-
-
-   
-}
-
-makeButtonsWork(btnMove, moveTask);
-
 
 
 
