@@ -1,30 +1,33 @@
 /* Basic Style */
 html {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../assets/images/mont3.jpeg) no-repeat center center fixed; }
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../../images/mont3.jpeg) no-repeat center center fixed;
+}
 
 body {
   color: #fff;
-  font-family: "Trebuchet MS", Helvetica, sans-serif; }
-
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
 .container {
   display: block;
   max-width: 400px;
-  margin: 80px auto; }
-
+  margin: 80px auto;
+}
 ul {
   margin: 2px;
-  padding: 0; }
-
+  padding: 0;
+}
 li * {
-  float: left; }
+  float: left;
+}
 
 li, h3 {
-  clear: both;
-  list-style: none; }
-
+  clear:both;
+  list-style:none;
+}
 input, button {
-  outline: none; }
-
+  outline: none;
+}
 button {
   background: none;
   border: 0px;
@@ -33,11 +36,11 @@ button {
   width: 60px;
   margin: 10px 0 0;
   font-family: Lato, sans-serif;
-  cursor: pointer; }
-
+  cursor: pointer;
+}
 button:hover {
-  color: #333; }
-
+  color: #333;
+}
 /* Heading */
 h3,
 label[for='new-task'] {
@@ -47,8 +50,8 @@ label[for='new-task'] {
   border-bottom: 2px solid #fff;
   padding: 30px 0 10px;
   margin: 0;
-  text-transform: uppercase; }
-
+  text-transform: uppercase;
+}
 input[type="text"] {
   margin: 0;
   font-size: 18px;
@@ -59,158 +62,194 @@ input[type="text"] {
   background: #fff;
   border-radius: 6px;
   font-family: Lato, sans-serif;
-  color: #888; }
-
+  color: #888;
+}
 input[type="text"]:focus {
-  color: #fff; }
+  color: #fff;
+}
 
 /* New Task */
-#addTask {
-  position: relative; }
 
+#addTask {
+  position: relative;
+}
 #addTask button {
   position: absolute;
   top: -14px;
-  right: -2px; }
+  right: -2px;
+}
 
 label[for='new-task'] {
   display: block;
-  margin: 0 0 20px; }
-
+  margin: 0 0 20px;
+}
 input#new-task {
   float: left;
   width: 90%;
   color: #000;
-  padding: 12px; }
-
+  padding: 12px;
+}
 p > button:hover {
-  color: #0FC57C; }
+  color: #0FC57C;
+}
 
 /*******ADD BUTTON *****/
-.cls-1 {
-  fill: #43b05c; }
+.cls-1{
+  fill:#43b05c;
+}
+.cls-2{
+  fill:none;
+  stroke:#fff;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:3px;
+}
 
-.cls-2 {
-  fill: none;
-  stroke: #fff;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 3px; }
-
-#Capa_1:hover .cls-1 {
+#Capa_1:hover .cls-1{
   fill: #328445;
-  transition: 0.1s; }
+  transition: 0.1s;
+}
 
 /*******MOVE BUTTON*****/
-.move-1 {
-  fill: none;
-  stroke: #43b05c;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 4px; }
+.move-1{
+  fill:none;
+  stroke:#43b05c;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:4px;
+}
 
-.move, .delete, .edit {
+.move, .delete, .edit{
   width: 30px;
   height: 30px;
   margin-top: 5px;
-  border-radius: 50%; }
+  border-radius: 50%;
+}
 
 .move {
-  border: 2px solid #43b05c; }
+  border: 2px solid #43b05c;
+}
 
 .move:hover .move-1 {
-  stroke: #fff; }
-
-.move:hover {
-  background: #43b05c; }
+   stroke:#fff;
+}
+.move:hover  {
+  background: #43b05c;
+}
 
 /*******DELETE*****/
+
 .delete-1 {
-  fill: none;
-  stroke: #f0f0f0;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 4px; }
+  fill:none;
+  stroke:#f0f0f0;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:4px;
+}
 
 .delete {
-  border: 2px solid #f0f0f0; }
+  border: 2px solid #f0f0f0;
+}
 
 .delete:hover {
-  border: 2px solid #ff5245; }
+    border: 2px solid #ff5245;
+}
 
-.delete:hover .delete-1 {
-  stroke: #ff5245; }
+.delete:hover  .delete-1{
+    stroke:#ff5245;
+}
 
 /************+EDIT BUTTON***********/
-.edit-1 {
-  fill: #f0f0f0; }
+.edit-1{
+  fill:#f0f0f0;
+}
 
 .edit {
-  border: 2px solid #f0f0f0;
-  margin-right: 10px;
-  margin-left: 10px; }
+    border: 2px solid #f0f0f0;
+    margin-right: 10px;
+    margin-left: 10px;
+}
 
 .edit:hover {
-  border: 2px solid #fff900; }
+    border: 2px solid #fff900;
+}
 
-.edit:hover .edit-1 {
-  fill: #fff900; }
+.edit:hover  .edit-1{
+      fill:#fff900;
+}
 
 /* Task list */
 li {
-  overflow: hidden; }
-
+  overflow: hidden;
+}
 li > input[type="checkbox"] {
   margin: 0 10px;
   position: relative;
-  top: 15px; }
-
+  top: 15px;
+}
 li > label {
   font-size: 18px;
   line-height: 25px;
   width: 160px;
   padding: 0 0 8px 11px;
-  margin-top: 7px; }
-
-li > input[type="text"] {
-  width: 141px; }
-
+  margin-top: 7px;
+}
+li >  input[type="text"] {
+  width: 141px;
+}
 li > .delete:hover {
-  color: #CF2323; }
+  color: #CF2323;
+}
 
 /* Completed */
 #completed-tasks label {
   text-decoration: line-through;
-  color: #fff; }
+  color: #fff;
+}
 
 /* Edit Task */
 ul li input[type=text] {
-  display: none; }
+  display:none;
+}
 
 ul li.editMode input[type=text] {
-  display: block;
+  display:block;
   color: #000;
-  margin-left: 8px; }
+  margin-left: 8px;
+}
 
 ul li.editMode label {
-  display: none; }
+  display:none;
+}
 
 #completed-tasks .move {
-  background: #43b05c; }
+  background: #43b05c;
+}
 
-#completed-tasks .move-1 {
-  stroke: #fff; }
-
+#completed-tasks .move-1{
+  stroke: #fff;
+}
 li {
   background: rgba(255, 255, 255, 0.27);
   border-radius: 10px;
   margin: 10px 0;
-  padding: 10px; }
+  padding: 10px;
+}
 
 @media screen and (min-width: 410px) {
-  li > input[type="text"] {
-    width: 231px; }
+
+  li >  input[type="text"] {
+    width: 231px;
+  }
+
   li > label {
-    width: 250px; }
+
+    width: 250px;
+  }
+
+
   #addTask button {
-    right: -15px; } }
+
+    right: -15px;
+  }
+}
